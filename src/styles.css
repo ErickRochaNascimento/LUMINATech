@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  /* --- PALETA DE CORES --- */
+  --cor-fundo-principal: #F5F5F7;
+  --cor-texto-principal: #1D1D1F;
+  --cor-destaque: #2997FF;       /* Azul para botões e links */
+  --cor-detalhes: #86868B;       /* Cinza para textos secundários */
+  
+  /* --- TIPOGRAFIA --- */
+  --fonte-principal: 'Inter', sans-serif;
+}
+
+/* --- APLICAÇÃO GLOBAL --- */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto-principal);
+  font-family: var(--fonte-principal);
+}
+
+/*Botão Padrão*/
+button.btn-primary {
+  background-color: var(--cor-destaque); 
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px; 
+  cursor: pointer;
+  font-weight: 600;
+}
