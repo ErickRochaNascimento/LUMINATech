@@ -1,11 +1,12 @@
 header {
-    width: 100%;
+    width: 100vw;
     background-color: var(--cor-fundo-principal);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 4vw;
     padding: 0 4vw;
+    border-bottom: 1px solid var(--cor-detalhes);
 }
 
 #menu-icones,
