@@ -4,12 +4,11 @@ import { CardProdutoService } from '../../services/card-produto.service';
 
 @Component({
   selector: 'app-card-produto',
-  imports: [CardProdutoService],
+  imports: [],
   templateUrl: './card-produto.component.html',
   styleUrl: './card-produto.component.css'
 })
 export class CardProdutoComponent {
-  products: Produto[] = [];
   
 
 
