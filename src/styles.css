@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   border: 0;
+  box-sizing: border-box;
   text-decoration: none;
   list-style-type: none;
 }
@@ -11,7 +12,7 @@
 
 :root {
   /* --- PALETA DE CORES --- */
-  --cor-fundo-principal: #F5F5F7;
+  --cor-fundo-principal: #ccc;
   --cor-texto-principal: #1D1D1F;
   --cor-destaque: #2997FF;       /* Azul para botões e links */
   --cor-detalhes: #86868B;       /* Cinza para textos secundários */
