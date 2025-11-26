@@ -1,0 +1,27 @@
+.card-produto-container {
+    border-radius: 8px;
+    width: 20vw;
+    position: relative;
+    background-color: var(--cor-fundo-principal);
+}
+
+.card-produto-container::before {
+    content: "";
+    display: block;
+    padding-top: 133.33%;
+}
+
+.card-conteudo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.estrelas{
+    display: block;
+}
+
