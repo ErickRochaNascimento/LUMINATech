@@ -90,8 +90,8 @@ export class SalesDashboardComponent implements OnInit, AfterViewInit {
         datasets: [{
           label: `Receita por ${this.filtroAtual.toUpperCase()} (R$)`,
           data: data as number[],
-          backgroundColor: 'rgba(54, 162, 235, 0.6)',
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: '#324e67',
+          borderColor: '#2997FF',
           borderWidth: 1
         }]
       },
