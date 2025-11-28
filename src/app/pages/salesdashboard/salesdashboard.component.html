@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<main class="dashboard-container">
+    <h1>Painel Administrativo</h1>
+    
+    <div class="metrics-grid">
+        <div class="card metric">
+            <h3>Total de Vendas</h3>
+            <p class="value">{{ totalVendas }}</p>
+        </div>
+        
+        <div class="card metric">
+            <h3>Receita Total</h3>
+            <p class="value">{{ receitaTotal | currency:'BRL' }}</p>
+        </div>
+
+        <div class="card metric">
+            <h3>Top Produto</h3>
+            <p class="value highlight">{{ produtoMaisVendido }}</p>
+        </div>
+    </div>
+
+    <div class="chart-container">
+        <canvas #salesChart></canvas>
+    </div>
+</main>

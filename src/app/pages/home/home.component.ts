@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   // Listas para armazenar os produtos
   smartphones: Produto[] = [];
   laptops: Produto[] = [];
+  tablets: Produto[] = [];
 
   ngOnInit(): void {
     this.carregarProdutos();
@@ -40,6 +41,13 @@ export class HomeComponent implements OnInit {
         this.laptops = data.products;
       },
       error: (err) => console.error('Erro ao buscar laptops', err)
+    });
+
+    this.cardProdutoService.getProdutos('tablets').subscribe({
+      next: (data) => {
+        this.tablets = data.products;
+      },
+      error: (err) => console.error('Erro ao buscar tablets', err)
     });
   }
 }

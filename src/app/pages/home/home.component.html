@@ -20,6 +20,16 @@
         </div>
     </section>
 
+    <section class="categoria-section">
+        <h2>Laptops de Alta Performance</h2>
+        <div class="carousel-produtos">
+            @for (item of tablets; track item.id) {
+                <app-card-produto [produto]="item"></app-card-produto>
+            }
+        </div>
+    </section>
+     
+
 </main>
 
 <app-footer></app-footer>
