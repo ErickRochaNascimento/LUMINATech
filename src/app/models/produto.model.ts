@@ -1,17 +1,21 @@
-export interface Produtos extends Array<Produto> {}
-
-export interface Produto{
-    id: number | string
-    title: string
-    description: string
-    price: number | string
-    rating: number | string
-    thumbnail: string
-    images: string
-    brand: string
-    stock: string
+export interface Produto {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    discountPercentage?: number;
+    rating: number;      // Necessário para as estrelas
+    stock: number;       // Necessário para o estoque
+    brand: string;       // Necessário para a marca
+    category: string;
+    thumbnail: string;
+    images: string[];    // Necessário para a galeria
 }
 
-export interface ProdutosAPI {
-  products: Produtos;
+// A resposta da API DummyJSON vem neste formato
+export interface ProdutoResponse {
+    products: Produto[];
+    total: number;
+    skip: number;
+    limit: number;
 }
