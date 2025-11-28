@@ -4,8 +4,9 @@ import { ProductDetailComponent } from './pages/productdetail/productdetail.comp
 import { SalesDashboardComponent } from './pages/salesdashboard/salesdashboard.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent, pathMatch: 'full' }, 
+    
     { path: 'product/:id', component: ProductDetailComponent },
-    { path: 'dashboard', component: SalesDashboardComponent }, // Nova rota
+    { path: 'dashboard', component: SalesDashboardComponent },
     { path: '**', redirectTo: '' }
 ];

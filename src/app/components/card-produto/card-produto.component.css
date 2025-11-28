@@ -37,3 +37,9 @@
     display: block;
     color: #f39c12; /* Cor de estrela */
 }
+
+.btn-primary {
+    position: relative;
+    z-index: 10; /* Garante que o botão fique acima de overlays do card */
+    cursor: pointer;
+}

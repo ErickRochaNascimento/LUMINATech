@@ -3,7 +3,7 @@ footer {
     background-color: var(--cor-fundo-principal);
     display: flex;
     align-items: center;
-    position: fixed;
+    position: static;
     justify-content: space-between;
     gap: 4vw;
     padding: 2vh 4vw;

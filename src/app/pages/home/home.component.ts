@@ -21,7 +21,9 @@ export class HomeComponent implements OnInit {
   smartphones: Produto[] = [];
   laptops: Produto[] = [];
   tablets: Produto[] = [];
+  produtosSamsung: Produto[] = [];
   produtosApple: Produto[] = [];
+  
 
   ngOnInit(): void {
     this.carregarProdutos();
@@ -52,6 +54,14 @@ export class HomeComponent implements OnInit {
     });
 
     this.cardProdutoService.searchProdutos('Samsung').subscribe({
+      next: (data) => {
+        // Filtra client-side para garantir que é a marca mesmo, se desejar, 
+        // mas o search da API geralmente retorna resultados relevantes.
+        this.produtosSamsung = data.products;
+      }
+    });
+
+    this.cardProdutoService.searchProdutos('Apple').subscribe({
       next: (data) => {
         // Filtra client-side para garantir que é a marca mesmo, se desejar, 
         // mas o search da API geralmente retorna resultados relevantes.
