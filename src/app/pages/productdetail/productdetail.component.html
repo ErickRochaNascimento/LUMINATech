@@ -34,6 +34,17 @@
         <button (click)="comprarProduto()" class="btn-buy">Comprar Agora</button>
       </div>
     </div>
+
+    @if (produtosRelacionados.length > 0) {
+      <section class="related-section">
+        <h2>Você também pode gostar</h2>
+        <div class="carousel-produtos">
+            @for (item of produtosRelacionados; track item.id) {
+                <app-card-produto [produto]="item"></app-card-produto>
+            }
+        </div>
+      </section>
+    }
   }
 </main>
 

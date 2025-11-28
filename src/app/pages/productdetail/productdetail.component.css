@@ -85,3 +85,34 @@
 .btn-buy:hover {
     background-color: var(--cor-destaque);
 }
+
+.related-section {
+  margin-top: 4rem;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+
+.related-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* Reutilizando estrutura flex/grid para o carrossel */
+.carousel-produtos {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  /* Opcional: Estilização da barra de rolagem */
+  scrollbar-width: thin;
+}
+
+.carousel-produtos::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carousel-produtos::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
