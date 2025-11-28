@@ -1,7 +1,25 @@
 <app-header></app-header>
-<body>
+
+<main class="home-container">
     
-</body>
+    <section class="categoria-section">
+        <h2>Smartphones em Destaque</h2>
+        <div class="carousel-produtos">
+            @for (item of smartphones; track item.id) {
+                <app-card-produto [produto]="item"></app-card-produto>
+            }
+        </div>
+    </section>
+
+    <section class="categoria-section">
+        <h2>Laptops de Alta Performance</h2>
+        <div class="carousel-produtos">
+            @for (item of laptops; track item.id) {
+                <app-card-produto [produto]="item"></app-card-produto>
+            }
+        </div>
+    </section>
+
+</main>
+
 <app-footer></app-footer>
-<style>body{height: 40vh;
-}</style>

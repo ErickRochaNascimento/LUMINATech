@@ -1,27 +1,39 @@
 .card-produto-container {
     border-radius: 8px;
     width: 20vw;
+    min-width: 250px; /* Garante um tamanho mínimo */
     position: relative;
-    background-color: var(--cor-fundo-principal);
+    background-color: #fff; /* Fundo branco para destaque */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra leve */
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: transform 0.2s;
 }
 
-.card-produto-container::before {
-    content: "";
-    display: block;
-    padding-top: 133.33%;
+.card-produto-container:hover {
+    transform: translateY(-5px); /* Efeito de levitar ao passar o mouse */
 }
 
 .card-conteudo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    padding: 15px;
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-.estrelas{
+.produto-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ajusta imagem sem distorcer */
+    border-radius: 4px;
+}
+
+.nome-preco h3 {
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.estrelas {
     display: block;
+    color: #f39c12; /* Cor de estrela */
 }
-

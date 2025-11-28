@@ -6,9 +6,17 @@ footer {
     position: fixed;
     justify-content: space-between;
     gap: 4vw;
-    padding: 0 4vw;
+    padding: 2vh 4vw;
     border-top: 1px solid var(--cor-detalhes);
+     background-color: var(--cor-primaria);
+    width: 100%;
 
+    bottom: 0;
+  
+}
+
+.sobre{
+    width: 40vw;
 }
 
 #menu-icones,
@@ -47,15 +55,7 @@ a {
 
 
 
-footer {
-    background-color: var(--cor-primaria);
-    width: 100%;
 
-    bottom: 0;
-    padding-left: 1px;
-    padding-right: 2px;
-    padding-top: 0.2rem;
-}
 
 footer ul {
     display: flex;

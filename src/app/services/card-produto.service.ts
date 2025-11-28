@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ProdutosAPI } from '../models/produto.model';
+import { Produtos, ProdutosAPI } from '../models/produto.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +14,8 @@ export class CardProdutoService {
 
   getProdutos(categoria: string): Observable<ProdutosAPI> {
     return this.http.get<ProdutosAPI>(`${this.baseUrl}/${categoria}`);
+  }
+  getProdutoById(id: string): Observable<Produtos> {
+    return this.http.get<Produtos>(`${this.baseUrl}/${id}`);
   }
 }

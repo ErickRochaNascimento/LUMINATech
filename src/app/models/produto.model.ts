@@ -7,6 +7,9 @@ export interface Produto{
     price: number | string
     rating: number | string
     thumbnail: string
+    images: string
+    brand: string
+    stock: string
 }
 
 export interface ProdutosAPI {
