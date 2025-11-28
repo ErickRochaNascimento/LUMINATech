@@ -12,9 +12,9 @@
 
 :root {
   /* --- PALETA DE CORES --- */
-  --cor-fundo-principal: #ccc;
+  --cor-fundo-principal: #f4f6f9;
   --cor-texto-principal: #1D1D1F;
-  --cor-destaque: #2997FF;       /* Azul para botões e links */
+  --cor-destaque: #324e67;       /* Azul para botões e links */
   --cor-texto-secundario: #324e67;
   --cor-texto-descricao: #444;
   --cor-detalhes: #86868B;       /* Cinza para textos secundários */

@@ -1,0 +1,55 @@
+.page-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    background-color: #f4f6f9; /* Mesma cor de fundo do dashboard */
+    min-height: 90vh;
+}
+
+.content-box {
+    background: white;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+    color: #003057; /* Ford Blue */
+    margin-bottom: 10px;
+}
+
+.intro {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 30px;
+    font-style: italic;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+}
+
+.text-content p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.features {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    flex: 1;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #e9ecef;
+}
+
+.feature-item h3 {
+    color: #007bff;
+    margin-bottom: 10px;
+}

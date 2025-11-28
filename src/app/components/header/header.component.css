@@ -79,6 +79,9 @@ a {
     color: var(--cor-texto-principal);
     transition: transform 0.2s;
 }
+.search-container img{
+    height: 3vh;
+}
 
 .search-container button:hover {
     transform: scale(1.1); /* Aumenta levemente a lupa ao passar o mouse */

@@ -4,7 +4,7 @@
     <nav id="menu">
         <li><a routerLink="/">Home</a></li>
         <li><a routerLink="/sobre">Sobre</a></li>
-        <li><a routerLink="/contato">Contato</a></li>
+        <li><a routerLink="/contatos">Contato</a></li>
     </nav>
     
     <nav id="menu-icones">
@@ -14,7 +14,7 @@
                    [(ngModel)]="termoBusca" 
                    (keyup.enter)="pesquisar()">
             
-            <button (click)="pesquisar()">🔍</button>
+            <button (click)="pesquisar()"><img src="iconLupa.png" alt=""></button>
         </div>
         
         <a href="">Usuario</a>
