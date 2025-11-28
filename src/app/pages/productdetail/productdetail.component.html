@@ -29,7 +29,6 @@
         
         <div class="price-box">
           <span class="price">{{ produto.price | currency:'BRL' }}</span>
-          <p class="stock">Disponível: {{ produto.stock }} unidades</p>
         </div>
 
         <button (click)="comprarProduto()" class="btn-buy">Comprar Agora</button>

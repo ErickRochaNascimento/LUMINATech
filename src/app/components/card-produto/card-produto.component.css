@@ -1,7 +1,7 @@
 .card-produto-container {
     border-radius: 8px;
     width: 20vw;
-    min-width: 250px; /* Garante um tamanho mínimo */
+    min-width: 19.5vw; /* Garante um tamanho mínimo */
     position: relative;
     background-color: #fff; /* Fundo branco para destaque */
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra leve */
