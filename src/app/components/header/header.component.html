@@ -1,12 +1,22 @@
 <header>
-    <a id="header-logo" href="/home"><h3>LUMINA</h3><p>Tech</p></a>
+    <a id="header-logo" routerLink="/"><h3>LUMINA</h3><p>Tech</p></a>
+    
     <nav id="menu">
-        <li><a href="/home">Home</a></li>
-        <li><a href="/sobre">Sobre</a></li>
-        <li><a href="/contato">Contato</a></li>
+        <li><a routerLink="/">Home</a></li>
+        <li><a routerLink="/sobre">Sobre</a></li>
+        <li><a routerLink="/contato">Contato</a></li>
     </nav>
+    
     <nav id="menu-icones">
-        <a href="">Pesquisa</a>
+        <div class="search-container">
+            <input type="text" 
+                   placeholder="Buscar..." 
+                   [(ngModel)]="termoBusca" 
+                   (keyup.enter)="pesquisar()">
+            
+            <button (click)="pesquisar()">🔍</button>
+        </div>
+        
         <a href="">Usuario</a>
     </nav>
 </header>

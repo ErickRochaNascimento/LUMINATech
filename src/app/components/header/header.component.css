@@ -39,3 +39,7 @@ a {
     font: var(--fonte-principal);
     color: var(--cor-texto-principal);
 }
+
+.search-container { display: flex; gap: 5px; align-items: center; }
+.search-container input { padding: 5px; border-radius: 4px; border: 1px solid #ccc; }
+.search-container button { cursor: pointer; background: none; border: none; font-size: 1.2rem; }
