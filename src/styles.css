@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-*{
+* {
   padding: 0;
   margin: 0;
   border: 0;
@@ -14,12 +14,14 @@
   /* --- PALETA DE CORES --- */
   --cor-fundo-principal: #f4f6f9;
   --cor-texto-principal: #1D1D1F;
-  --cor-destaque: #324e67;       /* Azul para botões e links */
+  --cor-destaque: #324e67;
+  /* Azul para botões e links */
   --cor-texto-secundario: #324e67;
   --cor-texto-descricao: #444;
-  --cor-detalhes: #86868B;       /* Cinza para textos secundários */
+  --cor-detalhes: #86868B;
+  /* Cinza para textos secundários */
   --cor-branco: #fff;
-  
+
   /* --- TIPOGRAFIA --- */
   --fonte-principal: 'Inter', sans-serif;
 }
@@ -35,11 +37,16 @@ body {
 
 /*Botão Padrão*/
 button.btn-primary {
-  background-color: var(--cor-destaque); 
+  background-color: var(--cor-destaque);
   color: #FFFFFF;
   border: none;
   padding: 10px 20px;
-  border-radius: 8px; 
+  border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+}
+
+button.btn-primary:hover {
+  box-shadow: 0 0 8px rgba(50, 78, 103, 0.4);
+  border-color: var(--cor-destaque);
 }

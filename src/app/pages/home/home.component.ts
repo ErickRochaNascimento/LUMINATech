@@ -4,7 +4,7 @@ import { HeaderComponent } from "../../components/header/header.component";
 import { FooterComponent } from "../../components/footer/footer.component";
 import { CardProdutoComponent } from "../../components/card-produto/card-produto.component";
 import { CardProdutoService } from '../../services/card-produto.service';
-import { Produto } from '../../models/produto.model';
+import { Produto, CATEGORIAS_ELETRONICOS } from '../../models/produto.model';
 
 @Component({
   selector: 'app-home',
@@ -57,15 +57,19 @@ export class HomeComponent implements OnInit {
       next: (data) => {
         // Filtra client-side para garantir que é a marca mesmo, se desejar, 
         // mas o search da API geralmente retorna resultados relevantes.
-        this.produtosSamsung = data.products;
+        this.produtosSamsung = data.products.filter(p => 
+            CATEGORIAS_ELETRONICOS.includes(p.category)
+        );
       }
     });
 
     this.cardProdutoService.searchProdutos('Apple').subscribe({
       next: (data) => {
+        this.produtosApple = data.products.filter(p => 
+            CATEGORIAS_ELETRONICOS.includes(p.category)
+        );
         // Filtra client-side para garantir que é a marca mesmo, se desejar, 
         // mas o search da API geralmente retorna resultados relevantes.
-        this.produtosApple = data.products;
       }
     });
   }

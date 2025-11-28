@@ -16,7 +16,8 @@ footer {
 }
 
 .sobre{
-    width: 40vw;
+    width: 30vw;
+
 }
 
 #menu-icones,
@@ -78,4 +79,41 @@ footer .redes-sociais {
 
 #logoRedes {
     width: 2rem;
+}
+
+p{
+    color: var(--cor-texto-descricao);
+}
+
+.social {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  font-size: 28px;
+  gap: 2vw;
+
+}
+
+.social a {
+
+  color: var(--cor-texto-secundario);
+  text-decoration: none;
+  margin: 10px;
+
+}
+
+.social:hover a {
+
+  opacity: 0.3;
+  transition: 0.5s;
+
+}
+
+.social:hover a:hover {
+
+  opacity: 1;
+  transition: 0.5s;
+
 }

@@ -19,3 +19,10 @@ export interface ProdutoResponse {
     skip: number;
     limit: number;
 }
+
+export const CATEGORIAS_ELETRONICOS = [
+    'smartphones', 
+    'laptops', 
+    'tablets',
+    'mobile-accessories' // Adicione outras se a API suportar
+];
