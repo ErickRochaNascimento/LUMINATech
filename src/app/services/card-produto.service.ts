@@ -9,7 +9,7 @@ import { Produto, ProdutoResponse } from '../models/produto.model';
 export class CardProdutoService {
   // Configuração correta da URL e injeção
   private apiUrl = 'https://dummyjson.com/products';
-  private http = inject(HttpClient); 
+  private http = inject(HttpClient);
 
   // Busca por categoria
   getProdutos(categoria: string): Observable<ProdutoResponse> {
@@ -19,5 +19,10 @@ export class CardProdutoService {
   // Busca por ID (usado na página de detalhes)
   getProdutoById(id: string): Observable<Produto> {
     return this.http.get<Produto>(`${this.apiUrl}/${id}`);
+  }
+
+  // Adicione este método na classe
+  searchProdutos(query: string): Observable<ProdutoResponse> {
+    return this.http.get<ProdutoResponse>(`${this.apiUrl}/search?q=${query}`);
   }
 }

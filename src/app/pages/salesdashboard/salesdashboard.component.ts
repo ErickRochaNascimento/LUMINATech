@@ -1,28 +1,30 @@
 import { Component, OnInit, inject, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms'; // Importe FormsModule para o <select>
 import { SalesService } from '../../services/sales.service';
 import { HeaderComponent } from "../../components/header/header.component";
 import { Chart, registerables } from 'chart.js/auto';
 
-// Registra os componentes do Chart.js
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-sales-dashboard',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, FormsModule], // Adicione FormsModule
   templateUrl: './salesdashboard.component.html',
   styleUrl: './salesdashboard.component.css'
 })
 export class SalesDashboardComponent implements OnInit, AfterViewInit {
   private salesService = inject(SalesService);
 
-  // Variáveis para as métricas
   totalVendas: number = 0;
   receitaTotal: number = 0;
-  produtoMaisVendido: string = '-';
+  itemMaisVendido: string = '-'; // Renomeado para ser genérico (pode ser marca ou produto)
 
-  // Referência ao elemento Canvas do HTML
+  // Tipo de filtro atual
+  filtroAtual: 'produto' | 'categoria' | 'marca' = 'produto';
+  chartInstance: Chart | null = null; // Para poder destruir e recriar o gráfico
+
   @ViewChild('salesChart') salesChart!: ElementRef;
 
   ngOnInit(): void {
@@ -30,50 +32,63 @@ export class SalesDashboardComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.atualizarDashboard();
+  }
+
+  // Chamado quando o usuário muda o select
+  onFilterChange() {
+    this.atualizarDashboard();
+  }
+
+  atualizarDashboard() {
+    this.calcularMetricas();
     this.gerarGrafico();
   }
 
   calcularMetricas() {
     const vendas = this.salesService.getSales();
-    
-    // 1. Total de Vendas
     this.totalVendas = vendas.length;
-
-    // 2. Receita Total (Soma dos preços)
     this.receitaTotal = vendas.reduce((acc: number, venda: any) => acc + venda.price, 0);
-
-    // 3. Produto Mais Vendido
-    if (vendas.length > 0) {
-      const contagem: any = {};
-      vendas.forEach((v: any) => {
-        contagem[v.productTitle] = (contagem[v.productTitle] || 0) + 1;
-      });
-      
-      this.produtoMaisVendido = Object.keys(contagem).reduce((a, b) => 
-        contagem[a] > contagem[b] ? a : b
-      );
-    }
   }
 
   gerarGrafico() {
     const vendas = this.salesService.getSales();
     
-    // Agrupa vendas por produto para o gráfico
-    const dadosPorProduto: any = {};
+    // Destrói gráfico anterior se existir para evitar sobreposição
+    if (this.chartInstance) {
+      this.chartInstance.destroy();
+    }
+
+    // Agrupamento dinâmico baseado no filtro
+    const dadosAgrupados: any = {};
+    
     vendas.forEach((v: any) => {
-      dadosPorProduto[v.productTitle] = (dadosPorProduto[v.productTitle] || 0) + v.price;
+      let chave = '';
+      if (this.filtroAtual === 'produto') chave = v.productTitle;
+      else if (this.filtroAtual === 'categoria') chave = v.category;
+      else if (this.filtroAtual === 'marca') chave = v.brand;
+
+      dadosAgrupados[chave] = (dadosAgrupados[chave] || 0) + v.price;
     });
 
-    const labels = Object.keys(dadosPorProduto);
-    const data = Object.values(dadosPorProduto);
+    // Calcular o "Top Item" baseado no agrupamento atual
+    if (Object.keys(dadosAgrupados).length > 0) {
+      this.itemMaisVendido = Object.keys(dadosAgrupados).reduce((a, b) => 
+        dadosAgrupados[a] > dadosAgrupados[b] ? a : b
+      );
+    } else {
+      this.itemMaisVendido = '-';
+    }
 
-    // Cria o Gráfico
-    new Chart(this.salesChart.nativeElement, {
-      type: 'bar', // Tipo barra
+    const labels = Object.keys(dadosAgrupados);
+    const data = Object.values(dadosAgrupados);
+
+    this.chartInstance = new Chart(this.salesChart.nativeElement, {
+      type: 'bar',
       data: {
         labels: labels,
         datasets: [{
-          label: 'Receita por Produto (R$)',
+          label: `Receita por ${this.filtroAtual.toUpperCase()} (R$)`,
           data: data as number[],
           backgroundColor: 'rgba(54, 162, 235, 0.6)',
           borderColor: 'rgba(54, 162, 235, 1)',
@@ -84,7 +99,7 @@ export class SalesDashboardComponent implements OnInit, AfterViewInit {
         responsive: true,
         plugins: {
           legend: { position: 'top' },
-          title: { display: true, text: 'Performance de Vendas' }
+          title: { display: true, text: `Performance por ${this.filtroAtual}` }
         }
       }
     });

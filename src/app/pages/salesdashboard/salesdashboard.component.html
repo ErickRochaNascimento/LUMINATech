@@ -1,7 +1,17 @@
 <app-header></app-header>
 
 <main class="dashboard-container">
-    <h1>Painel Administrativo</h1>
+    <div class="header-dashboard">
+        <h1>Painel Administrativo</h1>
+        <div class="filter-box">
+            <label for="filtro">Visualizar por:</label>
+            <select id="filtro" [(ngModel)]="filtroAtual" (change)="onFilterChange()">
+                <option value="produto">Produtos</option>
+                <option value="categoria">Categorias</option>
+                <option value="marca">Marcas</option>
+            </select>
+        </div>
+    </div>
     
     <div class="metrics-grid">
         <div class="card metric">
@@ -15,8 +25,8 @@
         </div>
 
         <div class="card metric">
-            <h3>Top Produto</h3>
-            <p class="value highlight">{{ produtoMaisVendido }}</p>
+            <h3>Top {{ filtroAtual | titlecase }}</h3>
+            <p class="value highlight">{{ itemMaisVendido }}</p>
         </div>
     </div>
 

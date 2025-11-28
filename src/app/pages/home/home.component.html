@@ -28,6 +28,15 @@
             }
         </div>
     </section>
+
+    <section class="categoria-section">
+        <h2>Destaques Samsung (Por Marca)</h2>
+        <div class="carousel-produtos">
+            @for (item of produtosApple; track item.id) {
+                <app-card-produto [produto]="item"></app-card-produto>
+            }
+        </div>
+    </section>
      
 
 </main>
