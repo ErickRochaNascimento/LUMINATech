@@ -17,10 +17,20 @@ export class LoginComponent {
   email = ''; senha = '';
 
   entrar() {
-    if (this.auth.login(this.email, this.senha)) {
-      this.router.navigate(['/']);
-    } else {
-      alert('Email ou senha inválidos!');
-    }
+    // Cria o objeto que o serviço espera
+    const dadosLogin = {
+      nome: this.email, // Ou this.usuario.nome, dependendo do seu form
+      senha: this.senha
+    };
+
+    // Envia apenas 1 argumento (o objeto)
+    this.auth.login(dadosLogin).subscribe({
+      next: (user) => {
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        alert('Email ou senha inválidos!');
+      }
+    });
   }
 }
