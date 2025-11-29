@@ -3,16 +3,24 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProductDetailComponent } from './pages/productdetail/productdetail.component';
 import { SalesDashboardComponent } from './pages/salesdashboard/salesdashboard.component';
 import { SearchComponent } from './pages/search/search.component';
-import { ContatoComponent } from './pages/contatos/contatos.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
+import { ContatoComponent } from './pages/contatos/contatos.component';
+
+// Importe os novos componentes
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
 
 export const routes: Routes = [
-    { path: '', component: HomeComponent, pathMatch: 'full' }, 
-
-    { path: 'search', component: SearchComponent },
+    { path: '', component: HomeComponent },
+    { path: 'login', component: LoginComponent },
+    { path: 'cadastro', component: CadastroComponent },
+    { path: 'meus-pedidos', component: MeusPedidosComponent }, // Página do usuário
+    
     { path: 'product/:id', component: ProductDetailComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'dashboard', component: SalesDashboardComponent },
-    { path: 'contatos', component: ContatoComponent },
     { path: 'sobre', component: SobreComponent },
+    { path: 'contato', component: ContatoComponent },
     { path: '**', redirectTo: '' }
 ];

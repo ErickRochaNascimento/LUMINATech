@@ -1,30 +1,37 @@
-// src/app/services/sales.service.ts
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Produto } from '../models/produto.model';
+import { AuthService } from './auth.service'; // Importe o AuthService
 
 @Injectable({
   providedIn: 'root'
 })
 export class SalesService {
   private storageKey = 'lumina_sales';
+  private authService = inject(AuthService); // Injete o Auth
 
   recordSale(produto: Produto): void {
+    const user = this.authService.currentUser();
+    
+    if (!user) {
+      alert('Por favor, faça login para comprar!');
+      return;
+    }
+    
     const currentSales = this.getSales();
     
-    // Agora salvamos categoria e brand também
     const newSale = {
       productId: produto.id,
       productTitle: produto.title,
       price: produto.price,
-      category: produto.category || 'Outros', // Fallback
-      brand: produto.brand || 'Genérico',     // Fallback
-      date: new Date().toISOString()
+      img: produto.thumbnail, // Útil para mostrar na lista
+      date: new Date().toISOString(),
+      userId: user.id // <--- VINCULA AO USUÁRIO
     };
     
     currentSales.push(newSale);
     localStorage.setItem(this.storageKey, JSON.stringify(currentSales));
     
-    alert(`Compra realizada com sucesso!\nProduto: ${produto.title}`);
+    alert(`Compra realizada com sucesso!`);
   }
 
   getSales(): any[] {
@@ -32,7 +39,12 @@ export class SalesService {
     return sales ? JSON.parse(sales) : [];
   }
 
-  clearSales(): void {
-    localStorage.removeItem(this.storageKey);
+  // Novo método para filtrar por usuário
+  getSalesByUser(): any[] {
+    const user = this.authService.currentUser();
+    if (!user) return [];
+    
+    const allSales = this.getSales();
+    return allSales.filter((sale: any) => sale.userId === user.id);
   }
 }

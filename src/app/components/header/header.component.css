@@ -86,3 +86,10 @@ a {
 .search-container button:hover {
     transform: scale(1.1); /* Aumenta levemente a lupa ao passar o mouse */
 }
+
+
+.user-area { display: flex; gap: 15px; align-items: center; }
+.ola { font-weight: bold; color: #003057; }
+.btn-sair { background: none; border: 1px solid #d9534f; color: #d9534f; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+.btn-sair:hover { background: #d9534f; color: white; }
+.link-login { font-weight: bold; color: #007bff; text-decoration: none; }
