@@ -5,21 +5,27 @@ import { SalesDashboardComponent } from './pages/salesdashboard/salesdashboard.c
 import { SearchComponent } from './pages/search/search.component';
 import { SobreComponent } from './pages/sobre/sobre.component';
 import { ContatoComponent } from './pages/contatos/contatos.component';
-
-// Importe os novos componentes
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { MeusPedidosComponent } from './pages/meus-pedidos/meus-pedidos.component';
+// Importe o Guard novo
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'cadastro', component: CadastroComponent },
-    { path: 'meus-pedidos', component: MeusPedidosComponent }, // Página do usuário
+    { path: 'meus-pedidos', component: MeusPedidosComponent },
+    
+    // ROTA PROTEGIDA AQUI:
+    { 
+        path: 'dashboard', 
+        component: SalesDashboardComponent,
+        canActivate: [adminGuard] // Adicione esta linha
+    },
     
     { path: 'product/:id', component: ProductDetailComponent },
     { path: 'search', component: SearchComponent },
-    { path: 'dashboard', component: SalesDashboardComponent },
     { path: 'sobre', component: SobreComponent },
     { path: 'contato', component: ContatoComponent },
     { path: '**', redirectTo: '' }
