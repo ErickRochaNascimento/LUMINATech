@@ -15,7 +15,7 @@
     <nav id="menu-icones">
         <div class="search-container">
             <input type="text" placeholder="Buscar..." [(ngModel)]="termoBusca" (keyup.enter)="pesquisar()">
-            <button (click)="pesquisar()">🔍</button>
+            <button (click)="pesquisar()"><img src="iconLupa.png" alt=""></button>
         </div>
         
         <div class="user-area" *ngIf="auth.currentUser() as user; else loginTemplate">
